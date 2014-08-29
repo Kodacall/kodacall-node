@@ -1,0 +1,15 @@
+{
+  "name": "kodacall",
+  "version": "0.0.1",
+  "private": true,
+  "description": "kodacall api module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    
+  },
+  "author": "Michael Wall <mwall@kodacall.com>",
+  "license": "Apache License, Version 2.0"
+}
