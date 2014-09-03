@@ -4,11 +4,6 @@ var https = require('https');
 var crypto = require('crypto');
 var request = require('request');
 
-/*kodacall.base = "https://api.openrmc.org/openrmc-beta";
-kodacall.url = kodacall.base + "/api/";
-kodacall.apiKey = 'BlyOt9cVdHcmthVLe8zq-JW0AvYvaCgQzPIq22_3uMk';
-kodacall.secret = 'kodacall_test'; */
-
 var base, url, apiKey, secret;
 
 kodacall.setBase = function (data){
@@ -44,9 +39,6 @@ kodacall.getSecret = function (data){
 }
 
 
-
-
-
 //Test call that returns the given message
 kodacall.apiEcho = function(message, callback) {
 
@@ -59,10 +51,12 @@ kodacall.apiEcho = function(message, callback) {
 	toSign += secret + ":";
 	toSign += "message:" + message;
 
-	console.log(toSign);
+	//enable for debuging
+	//console.log(toSign);
 
 	var signature = hash(toSign);
-	console.log(signature);
+	//enable for debuging
+	//console.log(signature);
 
 	toRequest += url;
 	toRequest += method + "?";
@@ -70,7 +64,8 @@ kodacall.apiEcho = function(message, callback) {
 	toRequest += "signature=" + signature + "&";
 	toRequest += "message=" + webSpace(message);
 
-	console.log(toRequest);
+	//enable for debuging
+	//console.log(toRequest);
 
 	request({
 		uri: toRequest,
@@ -82,33 +77,13 @@ kodacall.apiEcho = function(message, callback) {
 		if (error) {
 			console.log(error)
 		} else {
-			console.log(body);
+			//enable for debuging
+			//console.log(body);
 			callback(body);
 		}
 	});
 
 }
-
-/*kodacall.getEchoButton = function() {
-
-	var method = "getEchoButton";
-	var toSign = "";
-	var toRequest = "";
-
-	var agent = navigator.userAgent;
-	console.log(agent);
-
-	toSign += method + ":";
-	toSign += apiKey + ":";
-	toSign += secret + ":";
-	toSign += "message:" + message;
-
-	console.log(toSign);
-
-	var signature = hash(toSign);
-	console.log(signature);
-
-} */
 
 //Function to create new user
 kodacall.createUser = function(client, callback) {
@@ -149,10 +124,13 @@ kodacall.createUser = function(client, callback) {
 		}
 	}
 
-	console.log(toSign);
+	//enable for debuging
+	//console.log(toSign);
 
 	var signature = hash(toSign);
-	console.log(signature);
+
+	//enable for debuging
+	//console.log(signature);
 
 	toRequest += url;
 	toRequest += method + "?";
@@ -160,7 +138,7 @@ kodacall.createUser = function(client, callback) {
 	toRequest += "signature=" + signature + "&";
 
 	for (var propt in client) {
-		//console.log(propt, client[propt]);
+		
 
 		if (client[propt] == client[Object.keys(client)[Object.keys(client).length - 1]]) {
 			if (propt == "clientId") {
@@ -201,7 +179,8 @@ kodacall.createUser = function(client, callback) {
 		if (error) {
 			console.log(error)
 		} else {
-			console.log(body);
+			//enable for debuging
+			//console.log(body);
 			callback(body);
 		}
 	});
@@ -246,10 +225,13 @@ kodacall.updateUser = function(client, callback) {
 		}
 	}
 
-	console.log(toSign);
+	//enable for debuging
+	//console.log(toSign);
 
 	var signature = hash(toSign);
-	console.log(signature);
+
+	//enable for debuging
+	//console.log(signature);
 
 	toRequest += url;
 	toRequest += method + "?";
@@ -257,7 +239,6 @@ kodacall.updateUser = function(client, callback) {
 	toRequest += "signature=" + signature + "&";
 
 	for (var propt in client) {
-		//console.log(propt, client[propt]);
 
 		if (client[propt] == client[Object.keys(client)[Object.keys(client).length - 1]]) {
 			if (propt == "clientId") {
@@ -286,7 +267,8 @@ kodacall.updateUser = function(client, callback) {
 		}
 	}
 
-	console.log(toRequest);
+	//enable for debuging
+	//console.log(toRequest);
 
 	request({
 		uri: toRequest,
@@ -298,7 +280,8 @@ kodacall.updateUser = function(client, callback) {
 		if (error) {
 			console.log(error)
 		} else {
-			console.log(body);
+			//enable for debuging
+			//console.log(body);
 			callback(body);
 		}
 	});
@@ -317,7 +300,7 @@ kodacall.requestResources = function(client, callback) {
 	toSign += secret + ":";
 
 	for (var propt in client) {
-		//console.log(propt, client[propt]);
+		
 
 		if (propt == "clientId") {
 			toSign += "client.id:" + client[propt];
@@ -326,10 +309,13 @@ kodacall.requestResources = function(client, callback) {
 		}
 	}
 
-	console.log(toSign);
+	//enable for debuging
+	//console.log(toSign);
 
 	var signature = hash(toSign);
-	console.log(signature);
+	
+	//enable for debuging
+	//console.log(signature);
 
 	toRequest += url;
 	toRequest += method + "?";
@@ -337,7 +323,7 @@ kodacall.requestResources = function(client, callback) {
 	toRequest += "signature=" + signature + "&";
 
 	for (var propt in client) {
-		//console.log(propt, client[propt]);
+		
 
 		if (propt == "clientId") {
 			toRequest += "client.id=" + client[propt];
@@ -346,7 +332,8 @@ kodacall.requestResources = function(client, callback) {
 		}
 	}
 
-	console.log(toRequest);
+	//enable for debuging
+	//console.log(toRequest);
 
 	request({
 		uri: toRequest,
@@ -358,7 +345,8 @@ kodacall.requestResources = function(client, callback) {
 		if (error) {
 			console.log(error)
 		} else {
-			console.log(body);
+			//enable for debuging
+			//console.log(body);
 			callback(body);
 		}
 	});
@@ -375,7 +363,7 @@ kodacall.getResourceSummary = function(client, callback) {
 	toSign += secret + ":";
 
 	for (var propt in client) {
-		//console.log(propt, client[propt]);
+		
 		if (propt == "clientId") {
 			toSign += "client.id:" + client[propt];
 		} else {
@@ -384,10 +372,13 @@ kodacall.getResourceSummary = function(client, callback) {
 
 	}
 
-	console.log(toSign);
+	//enable for debuging
+	//console.log(toSign);
 
 	var signature = hash(toSign);
-	console.log(signature);
+	
+	//enable for debuging
+	//console.log(signature);
 
 	toRequest += url;
 	toRequest += method + "?";
@@ -395,7 +386,7 @@ kodacall.getResourceSummary = function(client, callback) {
 	toRequest += "signature=" + signature + "&";
 
 	for (var propt in client) {
-		//console.log(propt, client[propt]);
+		
 		if (propt == "clientId") {
 			toRequest += "client.id=" + client[propt];
 		} else {
@@ -403,7 +394,8 @@ kodacall.getResourceSummary = function(client, callback) {
 		}
 	}
 
-	console.log(toRequest);
+	//enable for debuging
+	//console.log(toRequest);
 
 	request({
 		uri: toRequest,
@@ -415,7 +407,8 @@ kodacall.getResourceSummary = function(client, callback) {
 		if (error) {
 			console.log(error)
 		} else {
-			console.log(body);
+			//enable for debuging
+			//console.log(body);
 			callback(body);
 		}
 	});
@@ -440,10 +433,13 @@ kodacall.getActivatedButton = function(client, callback) {
 
 	}
 
-	console.log(toSign);
+	//enable for debuging
+	//console.log(toSign);
 
 	var signature = hash(toSign);
-	console.log(signature);
+	
+	//enable for debuging
+	//console.log(signature);
 
 	toRequest += url;
 	toRequest += method + "?";
@@ -451,7 +447,7 @@ kodacall.getActivatedButton = function(client, callback) {
 	toRequest += "signature=" + signature + "&";
 
 	for (var propt in client) {
-		//console.log(propt, client[propt]);
+		
 		if (propt == "clientId") {
 			toRequest += "client.id=" + client[propt] + "&";
 		} else if (propt == "refererPath") {
@@ -459,7 +455,8 @@ kodacall.getActivatedButton = function(client, callback) {
 		}
 	}
 
-	console.log(toRequest);
+	//enable for debuging
+	//console.log(toRequest);
 
 	request({
 		uri: toRequest,
@@ -471,7 +468,8 @@ kodacall.getActivatedButton = function(client, callback) {
 		if (error) {
 			console.log(error)
 		} else {
-			console.log(body);
+			//enable for debuging
+			//console.log(body);
 			callback(body);
 		}
 	});
@@ -497,10 +495,14 @@ kodacall.deactivateButton = function(client, callback) {
 
 	}
 
-	console.log(toSign);
+	
+	//enable for debuging
+	//console.log(toSign);
 
 	var signature = hash(toSign);
-	console.log(signature);
+	
+	//enable for debuging
+	//console.log(signature);
 
 	toRequest += url;
 	toRequest += method + "?";
@@ -508,7 +510,7 @@ kodacall.deactivateButton = function(client, callback) {
 	toRequest += "signature=" + signature + "&";
 
 	for (var propt in client) {
-		//console.log(propt, client[propt]);
+		
 
 		if (propt == "clientId") {
 			toRequest += "client.id=" + client[propt];
@@ -517,7 +519,9 @@ kodacall.deactivateButton = function(client, callback) {
 		}
 	}
 
-	console.log(toRequest);
+	
+	//enable for debuging
+	//console.log(toRequest);
 
 	request({
 		uri: toRequest,
@@ -529,7 +533,8 @@ kodacall.deactivateButton = function(client, callback) {
 		if (error) {
 			console.log(error)
 		} else {
-			console.log(body);
+			//enable for debuging
+			//console.log(body);
 			callback(body);
 		}
 	});
@@ -553,10 +558,13 @@ kodacall.getCallToken = function(client, callback) {
   toSign += "callee:" + clientId + ":";
   toSign += "user.agent:" + userAgent;
 
+  //enable for debuging
   //console.log(toSign);
 
 
   var signature = hash(toSign);
+
+  //enable for debuging
   //console.log(signature);
 
   toRequest += url;
@@ -578,7 +586,7 @@ kodacall.getCallToken = function(client, callback) {
     if (error) {
       console.log(error)
     } else {
-      //console.log(response);
+      //enable for debuging
       //console.log(body);
       callback(body);
     }
@@ -596,10 +604,13 @@ kodacall.getSignallingConfig = function(client, callback) {
   toSign += secret + ":";
   toSign += "user:" + client;
 
-  console.log(toSign);
+  //enable for debuging
+  //console.log(toSign);
 
   var signature = hash(toSign);
-  console.log(signature);
+  
+  //enable for debuging
+  //console.log(signature);
 
   toRequest += url;
   toRequest += method + "?";
@@ -607,7 +618,8 @@ kodacall.getSignallingConfig = function(client, callback) {
   toRequest += "signature=" + signature + "&";
   toRequest += "user=" + client;
 
-  console.log(toRequest);
+  //enable for debuging
+  //console.log(toRequest);
 
   request({
     uri: toRequest,
@@ -619,7 +631,8 @@ kodacall.getSignallingConfig = function(client, callback) {
     if (error) {
       console.log(error)
     } else {
-      console.log(body);
+    //enable for debuging	
+      //console.log(body);
       callback(body);
     }
   });
@@ -627,7 +640,8 @@ kodacall.getSignallingConfig = function(client, callback) {
 
 function hash(message) {
 	var hash = crypto.createHash('sha256').update(message).digest('base64');
-	console.log(hash);
+	//enable for debuging
+	//console.log(hash);
 	var signature = hash.replace(/\+/g, '-').replace(/\//g, '_').replace(/\=+$/, '');
 	//console.log(signature);
 	return signature;
