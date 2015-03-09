@@ -1,20 +1,25 @@
 {
-  "name": "kodacall",
-  "version": "0.0.1",
+  "name": "Kodacall",
+  "version": "0.0.2",
   "private": true,
-  "description": "kodacall api module",
+  "description": "Kodacall API module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "  https://github.com/Kodacall/kodacall-node"
   },
   "author": "Michael Wall <mwall@kodacall.com>",
-  "readmeFilename": "README.md",
-  "license": "ISC"
+  "license": "Apache-2.0",
+  "_shasum": "465739cc51b2f3e886e7251403b859334f9cb1f7",
+  "_resolved": "git://github.com/Kodacall/kodacall-node.git#13acd929fcdf7cc2b42edc736a7f449f6412e11c",
+  "_from": "kodacall@git://github.com/Kodacall/kodacall-node.git",
+  "keywords": [
+    "webrtc",
+    "kodacall",
+    "api"
+  ]
 }
